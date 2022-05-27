@@ -1,16 +1,16 @@
-import mongoose from "mongoose";
-import { ReviewInfo } from "../interfaces/review/reviewInfo";
+import mongoose from 'mongoose';
+import { ReviewInfo } from '../interfaces/review/ReviewInfo';
 
 const ReviewShema = new mongoose.Schema({
   writer: {
     type: mongoose.Types.ObjectId,
     required: true,
-    ref: "User",
+    ref: 'User',
   },
   movie: {
     type: mongoose.Types.ObjectId,
     required: true,
-    ref: "Movie",
+    ref: 'Movie',
   },
   title: {
     type: String,
@@ -22,6 +22,6 @@ const ReviewShema = new mongoose.Schema({
 });
 
 export default mongoose.model<ReviewInfo & mongoose.Document>(
-  "Review",
+  'Review',
   ReviewShema
 );

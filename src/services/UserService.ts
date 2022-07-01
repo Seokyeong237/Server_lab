@@ -1,13 +1,12 @@
-import { PostBaseResponseDto } from "../interfaces/common/PostBaseResponseDto";
-import { UserCreateDto } from "../interfaces/user/UserCreateDto";
-import { UserResponseDto } from "../interfaces/user/UserResponseDto";
-import { UserUpdateDto } from "../interfaces/user/UserUpdateDto";
-import User from "../models/User";
+import { PostBaseResponseDto } from '../interfaces/common/PostBaseResponseDto';
+import { UserCreateDto } from '../interfaces/user/UserCreateDto';
+import { UserResponseDto } from '../interfaces/user/UserResponseDto';
+import { UserUpdateDto } from '../interfaces/user/UserUpdateDto';
+import User from '../models/User';
 
-const createUser = async (
-  userCreateDto: UserCreateDto
-): Promise<PostBaseResponseDto> => {
+const createUser = async (userCreateDto: UserCreateDto) => {
   try {
+    // 여기서 User는 User.ts에서 내보낸 것!, 새 document=row가 생성됨
     const user = new User({
       name: userCreateDto.name,
       phone: userCreateDto.phone,
@@ -18,7 +17,6 @@ const createUser = async (
 
     await user.save();
 
-    // return user도 가능
     const data = {
       _id: user._id,
     };
@@ -58,6 +56,17 @@ const findUserById = async (userId: string) => {
   }
 };
 
+const findAllUser = async () => {
+  try {
+    const users = await User.find();
+
+    return users;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
 const deleteUser = async (userId: string) => {
   try {
     await User.findByIdAndDelete(userId);
@@ -71,5 +80,6 @@ export default {
   createUser,
   updateUser,
   findUserById,
+  findAllUser,
   deleteUser,
 };

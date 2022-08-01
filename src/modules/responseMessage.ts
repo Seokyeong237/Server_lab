@@ -5,7 +5,7 @@ const message = {
   INTERNAL_SERVER_ERROR: '서버 내부 오류',
 
   // 유저 조회
-  READ_USER_SUCCESS: '유저 조회 성공',
+  READ_USER_SUCCESS: '유저 조회 성공 (GPG 테스트!)',
   READ_ALL_USER_ACCESS: '전체 유저 조회 성공',
   CREATE_USER_SUCCESS: '유저 생성 성공',
   DELETE_USER_SUCCESS: '유저 삭제 성공',
